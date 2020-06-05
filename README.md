@@ -8,6 +8,7 @@ The core computations are reliant on Numpy broadcasting to eliminate the need fo
 ## Basic Usage
 ```python
 # import the simulation class
+import numpy as np
 from MDSim import MDSim
 
 
@@ -32,8 +33,6 @@ L = np.sqrt(N / ρ)  # [Å]
 
 m = 39.9  # [u]
 
-n_iter = 10000
-
 config = {
     "N": 100, # number of particles
     "d": 2, # dimensionality of the lattice, must be 2 or 3
@@ -55,7 +54,7 @@ config = {
 # run a simulation and save a plot of the system after the last integration step
 mdsim = MDSim(config)
 mdsim.velocity_verlet()
-mdsim.plot_system("particles.png")
+mdsim.plot_system(save_as="particles.png")
 
 # run the simulation again, but this time make an animation
 config["n_iter"] = 500
